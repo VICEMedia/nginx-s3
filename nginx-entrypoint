@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -e
+set -o pipefail
+
+if [ ! -z "$S3_PATH" ]; then
+  aws s3 sync "$S3_PATH" /etc/nginx/
+fi
+
+exec "$@"

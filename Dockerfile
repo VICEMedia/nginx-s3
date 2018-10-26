@@ -1,4 +1,4 @@
-FROM nginx:1.15
+FROM openresty/openresty:stretch
 
 RUN apt-get -y update && \
     apt-get -y install python-dev && \
@@ -12,4 +12,4 @@ EXPOSE 80
 EXPOSE 443
 
 ENTRYPOINT [ "/usr/local/sbin/nginx-entrypoint" ]
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["/usr/local/openresty/bin/openresty", "-g", "daemon off;"]
